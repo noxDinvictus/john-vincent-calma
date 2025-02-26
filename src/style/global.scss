@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Print Container Styling */
+.print {
+  font-family: Arial, Helvetica, sans-serif !important;
+  color: black !important;
+  background: white !important;
+}
+
+/* Components inside print */
+
+.print * {
+  box-sizing: border-box !important;
+}
+
+.print .page {
+  width: 210mm !important; /* A4 width */
+  min-height: 297mm !important; /* A4 height */
+  padding: 10mm !important;
+  border: 1px solid #d3d3d3 !important;
+  border-radius: 5px !important;
+  background: white !important;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1) !important;
+}
+
+.print .sub-page {
+  height: auto !important;
+  min-height: 257mm !important;
+  overflow: hidden !important;
+}
+
+.print hr {
+  border: 1px solid #000000 !important;
+}
+
+.print h2 {
+  font-weight: bold !important;
+  color: black !important;
+  font-size: 16px !important;
+  margin-top: 5px;
+}
+
+.print p,
+.print li {
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  color: black !important;
+}
+
+.print li {
+  text-align: justify !important;
+}
+
+.print ul {
+  list-style-position: inside !important;
+  padding-left: 0 !important;
+}
+
+@media print {
+  .print ul {
+    list-style-type: disc !important; /* Ensure bullets are shown */
+    list-style-position: outside !important; /* Keep bullets aligned */
+    margin-left: 20px !important; /* Adjust spacing */
+    padding-left: 0 !important;
+  }
+
+  .print li {
+    text-align: left !important; /* Ensure text aligns correctly */
+    margin-left: 10px !important; /* Space between bullet and text */
+  }
+}
