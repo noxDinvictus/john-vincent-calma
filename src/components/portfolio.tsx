@@ -1,15 +1,9 @@
 'use client';
 
+import { c } from '@/data/constant';
+import { I } from '@/data/interface';
 import PrintLayout from '@/layout/print-layout';
-import { c } from '@/shared/constant';
-import {
-  Calendar,
-  ExternalLink,
-  Languages,
-  Linkedin,
-  MapPin,
-  Phone,
-} from 'lucide-react';
+import Icon from './Icon';
 
 interface IProps {
   readonly showOtherDetails?: boolean;
@@ -39,35 +33,52 @@ export default function Portfolio(props: IProps) {
         <div className="flex-center mb-2 flex-col">
           <h1 className="mb-2 text-2xl font-bold capitalize">{c.name}</h1>
           <p className="mb-2 text-sm">{c.title}</p>
-          <div className="flex-center w-full gap-4 text-sm">
+          <div className="flex-center mb-2 w-full gap-4 text-sm">
             <div className="flex-center gap-2">
-              <Phone size={15} />
-              <p>{c.contact.phone.kh}</p>
+              <Icon.Phone />
+              <p>{c.contact.phone.ph}</p>
             </div>
 
             <div className="flex-center gap-2">
-              <MapPin size={15} />
-              <p>{c.contact.country.kh}</p>
+              <Icon.Location />
+              <p>{c.contact.country.ph}</p>
             </div>
 
-            <div className="flex-center gap-2">
-              <Linkedin size={15} />
-              <p>{c.contact.linkedin}</p>
-            </div>
+            {showOtherDetails && (
+              <>
+                <div className="flex-center gap-2">
+                  <Icon.Language />
+                  <p>{c.Languages}</p>
+                </div>
+                <div className="flex-center gap-2">
+                  <Icon.Calendar />
+                  <p>{calculateAge()} years old</p>
+                </div>
+              </>
+            )}
           </div>
 
-          {showOtherDetails && (
-            <div className="flex-center w-full gap-4 text-sm">
-              <div className="flex-center gap-2">
-                <Languages size={15} />
-                <p>{c.Languages}</p>
-              </div>
-              <div className="flex-center gap-2">
-                <Calendar size={15} />
-                <p>{calculateAge()} years old</p>
-              </div>
-            </div>
-          )}
+          <div className="flex-center w-full gap-4 text-sm">
+            <IconWithLInk link={c.contact.telegramLink}>
+              <Icon.Telegram />
+            </IconWithLInk>
+
+            <IconWithLInk link={c.contact.whatsAppLink}>
+              <Icon.WhatsApp />
+            </IconWithLInk>
+
+            <IconWithLInk link={c.contact.linkedIn}>
+              <Icon.LinkedIn />
+            </IconWithLInk>
+
+            <IconWithLInk link={c.contact.github}>
+              <Icon.Github />
+            </IconWithLInk>
+
+            <IconWithLInk link={c.contact.profile}>
+              <Icon.Globe />
+            </IconWithLInk>
+          </div>
         </div>
         <h2>WORK EXPERIENCE</h2>
         <hr />
@@ -98,6 +109,24 @@ export default function Portfolio(props: IProps) {
         })}
       </PrintLayout>
     </div>
+  );
+}
+
+interface IIconWithLInk extends I.Child {
+  readonly link: string;
+}
+
+function IconWithLInk(props: IIconWithLInk) {
+  const { link, children } = props;
+  return (
+    <a
+      href={link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex-center text-blue-700"
+    >
+      {children}
+    </a>
   );
 }
 
@@ -193,11 +222,10 @@ function Projects(props: IProjects) {
             href={url}
             target="_blank"
             rel="noopener noreferrer"
-            className="italic text-blue-700"
+            className="flex-center gap-2 italic text-blue-700"
           >
-            {name}
+            {name} <Icon.ExternalLink />
           </a>
-          <ExternalLink size={15} />
         </div>
       )}
       <p>{description}</p>
