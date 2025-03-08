@@ -12,6 +12,8 @@ export const c = {
       kh: '+855 96 468 6390',
       ph: '+63 931 0929 449',
     },
+    telegramLink: 'https://t.me/jvcalma24',
+    whatsAppLink: 'https://wa.me/qr/4MEWHVOYKYZ7H1',
     country: {
       kh: 'Cambodia',
       ph: 'Philippines',
@@ -113,8 +115,8 @@ export const c = {
       technologies: ['Node.js', 'Express.js', '.NET', 'C#', 'PHP', 'Python'],
     },
     database: {
-      technologies: ['MongoDB', 'SQL Server'],
-      tools: ['SQL Server Management Studio 19', 'XAMPP', 'WAMP'],
+      technologies: ['MongoDB', 'SQL Server', 'PostgreSQL'],
+      tools: ['SQL Server Management Studio', 'XAMPP', 'WAMP', 'pgAdmin 4'],
     },
   },
 };

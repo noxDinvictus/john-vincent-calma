@@ -1,5 +1,5 @@
 export namespace I {
-  export interface IChild {
+  export interface Child {
     children: React.ReactNode;
   }
 }
