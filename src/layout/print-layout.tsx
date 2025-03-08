@@ -1,6 +1,6 @@
-import { I } from '@/shared/interface';
+import { I } from '@/data/interface';
 
-export default function PrintLayout({ children }: Readonly<I.IChild>) {
+export default function PrintLayout({ children }: Readonly<I.Child>) {
   return (
     <div id="print" className="print relative">
       <div className="page">

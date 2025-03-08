@@ -1,4 +1,4 @@
-import { I } from '@/shared/interface';
+import { I } from '@/data/interface';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import '../style/global.scss';
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   description: 'My Portfolio',
 };
 
-export default function RootLayout({ children }: Readonly<I.IChild>) {
+export default function RootLayout({ children }: Readonly<I.Child>) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
